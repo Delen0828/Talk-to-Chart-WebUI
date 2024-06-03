@@ -1,0 +1,52 @@
+<!-- {"config": {"background": "#000", "title": {"color": "#fff", "subtitleColor": "#fff"}, "style": {"guide-label": {"fill": "#fff"}, "guide-title": {"fill": "#fff"}}, "axis": {"domainColor": "#fff", "gridColor": "#888", "tickColor": "#fff"}, "range": {"category": ["#7fc97f", "#beaed4", "#fdc086", "#ffff99", "#386cb0", "#f0027f", "#bf5b17", "#666666"]}}, "data": {"url": "https://raw.githubusercontent.com/vis-nlp/Chart-to-text/main/statista_dataset/dataset/data/10030.csv"}, "mark": "bar", "encoding": {"color": {"value": "#386cb0"}, "x": {"type": "quantitative", "axis": {"labelAngle": -30, "title": "New registrations in thousands"}, "field": "New registrations in thousands"}, "y": {"type": "nominal", "axis": {}, "bin": false, "field": "programming language"}}, "title": ["Number of car registrations in Europe in", "2019 , by segment (in 1,000s)"], "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json"} -->
+<!-- {"config": {"range": {"category": ["#4c78a8", "#9ecae9", "#f58518", "#ffbf79", "#54a24b", "#88d27a", "#b79a20", "#f2cf5b", "#439894", "#83bcb6", "#e45756", "#ff9d98", "#79706e", "#bab0ac", "#d67195", "#fcbfd2", "#b279a2", "#d6a5c9", "#9e765f", "#d8b5a5"]}}, "data": {"url": "https://raw.githubusercontent.com/vis-nlp/Chart-to-text/main/statista_dataset/dataset/multiColumn/data/4171.csv"}, "mark": "line", "encoding": {"color": {"value": "#d6a5c9"}, "x": {"type": "temporal", "axis": {}, "bin": false, "field": "Month"}, "y": {"type": "quantitative", "axis": {"title": "Facebook fans"}, "field": "Facebook fans"}}, "title": ["Number of Facebook fans/twitter followers", "of the Washington Football Team (NFL) from", "2012 to 2020 (in millions)"], "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json"} -->
+<!-- {"config": {"view": {"stroke": "transparent"}, "background": "transparent", "font": "Segoe UI", "header": {"titleFont": "wf_standard-font, helvetica, arial, sans-serif", "titleFontSize": 16, "titleColor": "#252423", "labelFont": "Segoe UI", "labelFontSize": 13.333333333333332, "labelColor": "#605E5C"}, "axis": {"ticks": false, "grid": false, "domain": false, "labelColor": "#605E5C", "labelFontSize": 12, "titleFont": "wf_standard-font, helvetica, arial, sans-serif", "titleColor": "#252423", "titleFontSize": 16, "titleFontWeight": "normal"}, "axisQuantitative": {"tickCount": 3, "grid": true, "gridColor": "#C8C6C4", "gridDash": [1, 5], "labelFlush": false}, "axisBand": {"tickExtra": true}, "axisX": {"labelPadding": 5}, "axisY": {"labelPadding": 10}, "bar": {"fill": "#118DFF"}, "line": {"stroke": "#118DFF", "strokeWidth": 3, "strokeCap": "round", "strokeJoin": "round"}, "text": {"font": "Segoe UI", "fontSize": 12, "fill": "#605E5C"}, "area": {"fill": "#118DFF", "line": true, "opacity": 0.6}, "rect": {"fill": "#118DFF"}, "point": {"fill": "#118DFF", "filled": true, "size": 75}, "legend": {"titleFont": "Segoe UI", "titleFontWeight": "bold", "titleColor": "#605E5C", "labelFont": "Segoe UI", "labelFontSize": 13.333333333333332, "labelColor": "#605E5C", "symbolType": "circle", "symbolSize": 75}, "range": {"category": ["#118DFF", "#12239E", "#E66C37", "#6B007B", "#E044A7", "#744EC2", "#D9B300", "#D64550"], "diverging": ["#DEEFFF", "#118DFF"], "heatmap": ["#DEEFFF", "#118DFF"], "ordinal": ["#DEEFFF", "#c7e4ff", "#b0d9ff", "#9aceff", "#83c3ff", "#6cb9ff", "#55aeff", "#3fa3ff", "#2898ff", "#118DFF"]}}, "data": {"url": "https://raw.githubusercontent.com/vis-nlp/Chart-to-text/main/statista_dataset/dataset/data/23518.csv"}, "mark": "area", "encoding": {"color": {"value": "#118DFF"}, "x": {"type": "temporal", "axis": {"labelAngle": -90}, "bin": false, "field": "Month"}, "y": {"type": "quantitative", "axis": {"title": "Export volume in thousand metric tons"}, "field": "Export volume in thousand metric tons"}}, "title": ["Export volume of cut flowers from Kenya", "between January 2019 and October 2020 (in", "1,000 metric tons)"], "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json"} -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/openai-api/dist/openai.min.js"></script>
+  <title>Talk to Chart</title>
+</head>
+
+<body>
+  <script src="highlight.js"></script>
+  <script src="vega.js"> </script>
+  <h1> Talk to Chart</h1>
+  <label for="vega-lite-code">Enter Vega-Lite Code:</label>
+  <select id="file-selector">
+    <option value="">Select a file</option>
+  </select>
+  <label for="HF_key">Enter Huggingface Key:</label>
+  <input type="text" id="HF_key" >  </input>
+  <label for="OPENAI_key">Enter OpenAI Key:</label>
+  <input type="text" id="OPENAI_key" >  </input>
+
+  <div class="container">
+    <textarea id="vega-lite-code" rows="30" cols="50"> </textarea>
+    <script src="file.js"> </script>
+    <br>
+    <div id="vis"></div>
+  </div>
+  <!-- Container for API response -->
+  <div id="api-response"></div>
+  <div id="speech-result"></div>
+  <div id="match-sentence"></div>
+  <div id="button-box">
+    <button onclick="renderVegaLite();callApi()">Render</button><br>
+    <button id="speech-button">Start Recording</button>
+  </div>
+
+
+
+  <script src="js.js"></script>
+</body>
+
+</html>

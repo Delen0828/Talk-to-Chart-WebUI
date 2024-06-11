@@ -37,7 +37,7 @@ async function setUrl(number) {
 }
 
 const files = [];
-for (let i = 1; i <= 8822; i++) {
+for (let i = 1; i <= 100; i++) {
     files.push(`${i}.vl.json`);
 }
 
@@ -57,7 +57,7 @@ fileSelector.addEventListener('change', async function () {
     const fileName = this.value;
     if (fileName) {
         try {
-            const response = await fetch(`../vl_spec/${fileName}`);
+            const response = await fetch(`https://raw.githubusercontent.com/Delen0828/Talk-to-Chart-WebUI/main//vl_spec/${fileName}`);
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }

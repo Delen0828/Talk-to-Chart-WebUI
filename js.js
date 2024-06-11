@@ -18,10 +18,10 @@ function callApi() {
       const cleanedData = csvData.replace(/[\n,]/g, ' ');
       // console.log(cleanedData); // Output the cleaned CSV data
 
-      fetch('https://hl9x5y2d0gcrx6ye.us-east-1.aws.endpoints.huggingface.cloud/', {
+      fetch('https://oi7kxlazji.execute-api.us-east-1.amazonaws.com/Dev/', {
         method: 'POST',
         headers: {
-          "Accept" : "application/json",
+          // "Accept" : "application/json",
           "Content-Type": "application/json" 
         },
         body: JSON.stringify({
